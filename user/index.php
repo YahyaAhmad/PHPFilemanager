@@ -33,8 +33,32 @@ die();
 </head>
 <body>
 
+    <div id="moveToPopup">
+
+        <div class="shadowBox"></div>
+        <div class="moveToForm">
+
+            <div class="moveToUI">
+                <div class="folders"></div>
+    
+                <div class="buttons">
+    
+                    <button>Move</button>
+                    <button>Close</button>
+    
+    
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
     <div class="form_container">
-    <div class="lds-dual-ring loader show"></div>
+        <input type="file" id="file" style="display:none" />
+        
+        <div class="lds-dual-ring loader show"></div>
+
             <div class="my_form file border">
 
                 <nav class="my_nav">
@@ -48,7 +72,7 @@ die();
 
                     </div>
 
-                    <div class="my_toolbox"><i class="fas fa-file-upload"></i></div>
+                    <div class="my_toolbox"><i onclick="chooseFile();" class="fas fa-file-upload upload_button"></i></div>
 
                 </nav>
 

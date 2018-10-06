@@ -27,6 +27,8 @@ if($q == 'delete'){
 }
 
 
+
+
 ?>
 
 
@@ -53,13 +55,31 @@ function GetFiles($username,$path){
         $files = array_diff(scandir($path), array('.', '..'));
         $data = [];
         foreach ($files as $file) {
+            $fileInfo = ["name" => "", "type" => ""];
             $type = '';
+            $bytes = 0;
+            $unit = '';
+            $size = '';
             if(is_dir($path.'/'.$file))
                 $type = 'dir';
-            else
+            else{
                 $type = 'file';
+                $bytes = filesize($path.'/'.$file);
+                if($bytes>1024*1024){
+                    $size = round($bytes/1024/1024,3) . " MB";
+                    
+                }
+                else{
+                    $size = round($bytes/1024,3) . " KB";
+                }
+                $fileInfo["size"] = $size;
+            }
+            
+            $fileInfo["name"] = $file;
+            $fileInfo["type"] = $type;
 
-            array_push($data,["name" => $file, "type" => $type]);
+            array_push($data,$fileInfo);
+            // ["name" => $file, "type" => $type, "size" => $size ]
         }
         
         echo json_encode($data);

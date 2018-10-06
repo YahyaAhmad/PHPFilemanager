@@ -2,6 +2,7 @@ var path = '';
 var files = [];
 var timeout;
 var getFilesInterval;
+var toMove = "";
 
 $(document).ready(()=>{
 
@@ -15,7 +16,12 @@ $(document).ready(()=>{
     }
     }, 100);
 
+    $('#file').change((e)=>{
+        uploadFile();
+    });
+
 });
+
 
 
 function getTitle(){
@@ -58,18 +64,18 @@ function getFiles(){
             var icon;
             if(data[i].type=='file'){
                 icon = `<i class="fas fa-file"></i>`;
-                action = "download($(this).children('span').html());";
+                action = "download($(this).children('span').html()); ";
             }
             else{
                 icon = `<i class="fas fa-folder"></i>`;
-                action = "navigate($(this).children('span').html());";
+                action = "navigate($(this).children('span').html()); ";
             }
 
             rows  += `
             <tr>
                 <td>${counter}</td>
-                <td class="dir" onclick="${action}">${icon} <span>${data[i].name}</span></td>
-                <td>MB 0.00</td>
+                <td class="dir" onclick="${action}">${icon} <span>${data[i].name}</span><span onclick="showMoveWindow($(this).parent().children('span').html()); event.stopPropagation();" class="move_button" >Move to</span></td>
+                <td>${data[i].size==undefined?'__':data[i].size}</td>
                 <td><i onclick="deleteFile($(this).parent().parent().children().children('span').html());" class="fas fa-minus-circle delete"></i></td>
             </tr>
             `;
@@ -135,6 +141,8 @@ function back(){
 }
 
 function deleteFile(file){
+    if(!window.confirm("You are going to delete a file/folder.")) return;
+
     var fullPath = window.path + '/' + file;
     $.get(`../php/user.php?q=delete&path=${fullPath}`, ()=>{
 
@@ -144,4 +152,43 @@ function deleteFile(file){
 
     });
     
+}
+
+function chooseFile(){
+    $('#file').click();
+}
+
+function uploadFile(){
+    if($('#file').val()=="") return;
+
+    var myFile = $('#file').prop('files')[0];   
+    var form = new FormData();                  
+    form.append('file', myFile);
+    form.append('path', window.path);
+
+    $.post({
+
+        url: '../php/upload.php',
+        data: form,
+        success: (res)=>{
+
+            getFiles();
+            clearInterval(getFilesInterval);
+            getFilesInterval = setInterval(getFiles,5000);
+        
+        },
+        processData: false,
+        contentType: false     
+
+    });
+
+    
+
+    $('#file').val("");
+}
+
+function showMoveWindow(file){
+
+    toMove = window.path + '/' + file;
+    $('#moveToPopup').addClass('show');
 }
