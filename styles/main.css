@@ -1,0 +1,103 @@
+body{
+    background-color: rgb(237, 225, 250);
+    font-size: 11pt;
+}
+
+.form_container{
+    display: flex;
+    height: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.my_form{
+    padding: 25px;
+    
+    background-color: rgb(245, 241, 241);
+}
+.my_form.login{
+    width:450px;
+}
+
+.my_form.register{
+    width:820px;
+}
+
+.form_text{
+    /* position: absolute; */
+    white-space: nowrap;
+}
+.row{
+    margin-top: 15px
+}
+
+.row:first-child{
+    margin-top:0;
+}
+
+.lds-dual-ring {
+    position: absolute;
+    display: table;
+    right: 5px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.15s;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 1px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    border-color: #c7bdf7 transparent #c7bdf7 transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .lds-dual-ring.show{
+      visibility: visible;
+      opacity: 1;
+  }
+
+  #result{
+      position: absolute;
+  }
+
+  .row_buffer{
+      padding: 10px;
+  }
+
+  .row_buffer .text-danger, .row_buffer .text-success{
+      padding: 5px;
+  }
+
+  .row-margin_1{
+      padding-top:25px;
+  }
+
+  .form_error{
+      transition: 0.5s;
+      font-size: 10pt;
+      
+  }
+  
+  i{
+      margin-right: 8px;
+      color: rgb(129, 129, 129);
+      position: relative;
+    top:-3px;
+  }
+
+  .hidden{
+      opacity: 0;
+  }

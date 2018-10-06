@@ -1,0 +1,145 @@
+
+html{
+    height: 100vh;
+}
+
+.file{
+
+    width: 95%;
+    width: 95vw;
+    padding: 0;
+    min-height: 300px;
+
+}
+
+.header{
+    display: flex;
+    align-items: center;
+
+    background-color: rgb(105, 105, 241);
+    font-size: 12pt;
+    color: white;
+
+}
+
+.my_toolbox{
+    padding: 25px 64px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #00000023;
+}
+
+.my_toolbox i{
+    transform: scale(2);
+}
+
+table{
+    width: 100%;
+    margin: 30px 20px 5px 20px;
+    transition: 0.2s;
+}
+
+table td, table th{
+    padding: 5px;
+}
+
+tr th:first-child,
+tr td:first-child {
+  width: 10%;
+  min-width: 40px;
+  white-space: nowrap;
+}
+
+tr th:nth-child(2),
+tr td:nth-child(2) {
+  width: 60%;
+  white-space: nowrap;
+}
+
+tr th:nth-child(3),
+tr td:nth-child(3) {
+  width: 10%;
+  min-width: 80px;
+  white-space: nowrap;
+}
+
+tr th:nth-child(4),
+tr td:nth-child(4) {
+  width: 20%;
+  min-width: 120px;
+  white-space: nowrap;
+}
+
+.lds-dual-ring{
+    /* right: 0;
+    left:0;
+    top: 20px;
+    bottom: 0;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center; */
+    display: block;
+    right: unset;
+    transform: scale(2) translateY(15px);
+    
+    
+    position: absolute;
+
+
+}
+
+.dir{
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.dir:hover{
+    background-color:rgb(230, 230, 230);
+}
+
+.delete{
+    position: relative;
+    top:1px;
+    cursor: pointer;
+    transition: 0.25s;
+    
+}
+
+.delete:hover{
+    color: rgb(172, 172, 172);
+}
+
+.back_icon{
+
+    margin-right: 15px;
+    border-right: 1px solid #c6c0dfbb;
+    padding: 5px 10px;
+    transition:  0.25s;
+    cursor: pointer;
+}
+
+.enabled:hover{
+    background-color: rgb(136, 136, 230);
+}
+
+
+
+.back_icon i{
+    position: relative;
+    top:0px;
+    transform: scale(1.5);
+    color:white;
+    margin:auto;
+}
+
+.disabled{
+    transition: 0s;
+    cursor: auto;
+    background-color: #9186a7;
+
+}
+
+.disabled i{
+    color: #ddd;
+}

@@ -1,0 +1,18 @@
+.form-control.is-valid{
+    border-color: #6ae486f0;
+}
+
+.form-control.form-control.is-invalid{
+    
+    border-color: #e09ba2;
+    
+}
+
+.form-control{
+    border: 2px solid #ced4da;
+    width: 100%;
+}
+
+.text-success, .text-danger{
+    /* font-size: 10pt; */
+}
